@@ -1,13 +1,13 @@
 provider "google" {
-  project = "neat-glazing-473202-f3"
-  region = "us-central1"
+  project = var.project
+  region = var.region
   credentials = "${file("${var.path}/sa-token.json")}"
 }
 
 resource "google_compute_instance" "default"{
-    name = "test"
+    name = "devops-vm"
     machine_type = "n1-standard-1"
-    zone = "us-central1-a"
+    zone = var.zone
 
     boot_disk {
       initialize_params {
@@ -21,5 +21,5 @@ resource "google_compute_instance" "default"{
         
       }
     }
-    
+
 }
