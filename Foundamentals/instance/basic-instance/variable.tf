@@ -13,6 +13,6 @@ variable "zone" {
 }
 
 ### list-count-varibale
-variable "count_number" {
+variable "machine_count" {
     default = ["server1","server2","server3"] 
 }
