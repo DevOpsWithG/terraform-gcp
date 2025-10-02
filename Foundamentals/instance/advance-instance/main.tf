@@ -42,3 +42,19 @@ resource "google_compute_firewall" "allow_traffic" {
   }
   source_tags = ["allow-http"] ## can be name, use this same in tag section of instance
 }
+
+### Volume
+
+resource "google_compute_disk" "default" {
+  name = "test-disk"
+  type  = "pd-ssd"
+  zone = var.zone
+  size = "10"  
+}
+
+### Attach this disk to instance
+
+resource "google_compute_attached_disk" "default" {
+  disk = google_compute_disk.default.self_link
+  instance = google_compute_instance.default[0].self_link
+}
