@@ -40,5 +40,5 @@ resource "google_compute_firewall" "allow_traffic" {
     protocol = "tcp"
     ports = ["80"]
   }
-  target_tags = ["allow-http"] ## can be name, use this same in tag section of instance
+  source_tags = ["allow-http"] ## can be name, use this same in tag section of instance
 }
