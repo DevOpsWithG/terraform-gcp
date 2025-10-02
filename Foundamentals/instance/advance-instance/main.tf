@@ -1,7 +1,7 @@
 resource "google_compute_instance" "default" {
-    name = advance-vm
+    name = "advance-vm"
     zone = var.zone
-    machine_type = n1-standard-1
+    machine_type = "n1-standard-1"
     can_ip_forward = "false"
     description = "This is production ready vm in dev env"
        
@@ -9,8 +9,8 @@ resource "google_compute_instance" "default" {
 
     boot_disk {
       initialize_params {
-        image = debian-cloud/debian-11
-        size = 15
+        image = "debian-cloud/debian-11"
+        size = "15"
       }
     }
 
