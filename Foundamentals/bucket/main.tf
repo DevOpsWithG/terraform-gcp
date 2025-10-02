@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "bucket" {
-    name = "basic-bucket"
+    name = "basic-bucket-gs511"
     location = var.region
     storage_class = "REGIONAL"
 
