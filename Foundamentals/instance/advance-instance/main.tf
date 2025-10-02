@@ -56,5 +56,5 @@ resource "google_compute_disk" "default" {
 
 resource "google_compute_attached_disk" "default" {
   disk = google_compute_disk.default.self_link
-  instance = google_compute_instance.default[0].self_link
+  instance = google_compute_instance.default.self_link
 }
