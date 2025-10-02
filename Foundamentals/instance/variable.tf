@@ -11,3 +11,8 @@ variable "region" {
 variable "zone" {
     default = "us-central1-a"
 }
+
+### list-count-varibale
+variable "count_number" {
+    default = ["server1","server2","server3"] 
+}

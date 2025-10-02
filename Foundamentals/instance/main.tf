@@ -5,7 +5,8 @@ provider "google" {
 }
 
 resource "google_compute_instance" "default"{
-    name = "devops-vm"
+    count = length(var.count_number)    ## how many times this resource we're gonna make
+    name = "devops-${count.index+1}"
     machine_type = "n1-standard-1"
     zone = var.zone
 
