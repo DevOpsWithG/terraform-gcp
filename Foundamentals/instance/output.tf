@@ -12,3 +12,13 @@ output "external_ips" {
 #output "external_ip" {
 #  value = google_compute_instance.default[0].network_interface[0].access_config[0].nat_ip
 #}
+
+#### if you want output in single line ex. instance_id: test1, test2, test3...
+# insetead of test1,
+#             test2,
+#             test3
+# Use join function
+# Ex 
+#output "instance_id" {
+#    value = join(",", google_compute_instance.default.*.id)  
+#}
