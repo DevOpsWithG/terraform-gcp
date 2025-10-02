@@ -5,7 +5,7 @@ resource "google_sql_database_instance" "devopswithgsql"{
    region = var.region
    database_version = var.database_version
 
-   setting {
+   settings {
     tier = var.tier
     disk_size = var.disk_size
     replication_type = var.replication_type
@@ -17,7 +17,7 @@ resource "google_sql_database_instance" "devopswithgsql"{
 resource "google_sql_user" "admin" {
     count = 1
     name = var.user_name
-    hosts = var.user_host
+    host = var.user_host
     password = var.user_password
     instance = "google_sql_database_instance.devopswithgsql.name"
 }
