@@ -4,6 +4,7 @@ resource "google_sql_database_instance" "devopswithgsql"{
    name = var.name
    region = var.region
    database_version = var.database_version
+   deletion_protection = false
 
    settings {
     tier = var.tier
