@@ -10,11 +10,12 @@ resource "google_sql_database_instance" "devopswithgsql"{
     disk_size = var.disk_size
     availability_type = var.availability_type
     activation_policy = var.activation_policy
+       backup_configuration {
+        enabled = true 
+        binary_log_enabled = true  ## required for MySQL HA
+       }
    }
-   backup_configuration {
-    enabled = true 
-    binary_log_enabled = true  ## required for MySQL HA
-   }
+
 }
 
 ## creating user 
