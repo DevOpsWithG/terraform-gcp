@@ -18,5 +18,5 @@ variable "database_version" { default = "MYSQL_5_7"}
 variable "user_host" { default = "%"}   ## % means all hosts
 variable "user_name" { default = "devopswithg"}
 variable "user_password" { default = "devopswithgpass@123"}
-variable "replication_type" { default = "SYNCHRONOUS"}
+variable "availability_type" { default = "REGIONAL"}
 variable "activation_policy" { default = "always"}

@@ -19,5 +19,5 @@ resource "google_sql_user" "admin" {
     name = var.user_name
     host = var.user_host
     password = var.user_password
-    instance = "google_sql_database_instance.devopswithgsql.name"
+    instance = google_sql_database_instance.devopswithgsql.name
 }
