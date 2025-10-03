@@ -8,7 +8,7 @@ resource "google_sql_database_instance" "devopswithgsql"{
    settings {
     tier = var.tier
     disk_size = var.disk_size
-    replication_type = var.replication_type
+    availability_type = var.availability_type
     activation_policy = var.activation_policy
    }
 }
