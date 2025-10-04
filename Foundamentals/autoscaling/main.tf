@@ -67,19 +67,19 @@ resource "google_compute_region_instance_group_manager" "instance_group_manager"
 }
 
 # Auto Scaling Policy <--- How many instances 
-resource "google_compute_region_autoscalar" "autoscalar" {
+resource "google_compute_region_autoscaler" "autoscaler" {
     count = 1
-    name = "autoscalar 
+    name = "autoscaler" 
     project = var.project
     region = var.region
     target = google_compute_region_instance_group_manager.instance_group_manager.self_link
 
     autoscaling_policy {
         max_replicas = 2
-        main_replicas = 1
+        min_replicas = 1
         cooldown_period = 60   # sec 
         cpu_utilization {
-            target = "0.8"
+            target = 0.8
         }
     }
 }
