@@ -60,7 +60,7 @@ resource "google_compute_region_instance_group_manager" "instance_group_manager"
     region = var.region
 
     auto_healing_policies {
-        health_check = google_compute_health_check.health.self_link
+        health_check = google_compute_health_check.health[0].self_link
         initial_delay_sec = "300"   ## sec
     }
 
