@@ -40,7 +40,7 @@ module "gke" {
       logging_variant             = "DEFAULT"
       auto_repair                 = true
       auto_upgrade                = true
-      service_account             = "project-service-account@${var.project}.iam.gserviceaccount.com"
+#      service_account             = "project-service-account@${var.project}.iam.gserviceaccount.com"
       preemptible                 = false
       initial_node_count          = 1
       accelerator_count           = 1
@@ -74,17 +74,17 @@ module "gke" {
     }
   }
 
-  node_pools_taints = {
-    all = []
-
-    default-node-pool = [
-      {
-        key    = "default-node-pool"
-        value  = true
-        effect = "PREFER_NO_SCHEDULE"
-      },
-    ]
-  }
+#  node_pools_taints = {
+#    all = []
+#
+#    default-node-pool = [
+#      {
+#       key    = "default-node-pool"
+#        value  = true
+#        effect = "PREFER_NO_SCHEDULE"
+#      },
+#    ]
+#  }
 
   node_pools_tags = {
     all = []
