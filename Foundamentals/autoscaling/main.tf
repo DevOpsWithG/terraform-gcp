@@ -1,4 +1,7 @@
+## Instance template
+
 resource "google_compute_instance_template" "instance_template" {
+    count = 1
     name = "devopswithg-${count.index+1}"
     description = "This is our autosacling instance_template"
     ## tags = []
@@ -16,6 +19,67 @@ resource "google_compute_instance_template" "instance_template" {
 
     disk {
         source_image = "debian-cloud/debian-11"
-        
+        auto_delete = "true"
+        boot = "true"
     }
-}   
+
+    disk {
+        auto_delete = "false"
+        disk_size_gb = "10"
+        mode = "READ_WRITE"
+        type = "PERSISTENT"
+    }
+
+    network_interface {
+        network = "default"
+    }
+
+}
+
+### Health Check
+resource "google_compute_health_check" "health" {
+    count = 1
+    name = "devopswithg-helth"
+    check_interval_sec = 5
+    timeout_sec = 5
+    health_threshold = 2
+    unhealth_threshold = 10
+
+    http_health_check {
+        request_path = "/alive.jsp"
+        port = "8080"
+    }
+}
+
+### group manager <--- manages the nodes
+
+resource "google_compute_region_instance_group_manager" "instance_group_manager" {
+    name = "instance-group-manager"
+    instance_template = google_compute_instance_template.instance_template[0].self_link
+    base_instance_name = "instance-group-manager"
+    region = var.region
+
+    auto_healing_policies {
+        health_check = google_compute_health_check.health.self_link
+        initial_delay_sec = "300"   ## sec
+    }
+
+}
+
+# Auto Scaling Policy <--- How many instances 
+resource "google_compute_region_autoscalar" "autoscalar" {
+    count = 1
+    name = "autoscalar 
+    project = var.project
+    region = var.region
+    target = google_compute_region_instance_group_manager.instance_group_manager.self_link
+
+    autoscaling_policy {
+        max_replicas = 2
+        main_replicas = 1
+        cooldown_period = 60   # sec 
+        cpu_utilization {
+            target = "0.8"
+        }
+    }
+}
