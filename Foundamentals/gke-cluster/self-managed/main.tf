@@ -22,6 +22,7 @@ module "gke" {
   horizontal_pod_autoscaling = true
   filestore_csi_driver       = false
   dns_cache                  = false
+  deletion_protection = false
 
   node_pools = [
     {
