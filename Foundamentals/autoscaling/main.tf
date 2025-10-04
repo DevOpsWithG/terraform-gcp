@@ -55,7 +55,6 @@ resource "google_compute_health_check" "health" {
 
 resource "google_compute_region_instance_group_manager" "instance_group_manager" {
     name = "instance-group-manager"
-    instance_template = google_compute_instance_template.instance_template[0].self_link
     base_instance_name = "instance-group-manager"
     region = var.region
 
