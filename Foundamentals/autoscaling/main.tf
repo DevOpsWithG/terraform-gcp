@@ -59,6 +59,10 @@ resource "google_compute_region_instance_group_manager" "instance_group_manager"
     base_instance_name = "instance-group-manager"
     region = var.region
 
+    version {
+      instance_template = google_compute_instance_template.instance_template[0].self_link
+    }
+
     auto_healing_policies {
         health_check = google_compute_health_check.health[0].self_link
         initial_delay_sec = "300"   ## sec
