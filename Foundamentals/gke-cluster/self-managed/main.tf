@@ -27,7 +27,7 @@ module "gke" {
   node_pools = [
     {
       name                        = "default-node-pool"
-      machine_type                = "n1-standard-2"
+      machine_type                = "e2-medium"
       node_locations              = "us-central1-b,us-central1-c"
       min_count                   = 1
       max_count                   = 2
@@ -74,17 +74,17 @@ module "gke" {
     }
   }
 
-#  node_pools_taints = {
-#    all = []
-#
-#    default-node-pool = [
-#      {
-#       key    = "default-node-pool"
-#        value  = true
-#        effect = "PREFER_NO_SCHEDULE"
-#      },
-#    ]
-#  }
+  node_pools_taints = {
+    all = []
+
+    default-node-pool = [
+      {
+       key    = "default-node-pool"
+        value  = true
+        effect = "PREFER_NO_SCHEDULE"
+      },
+    ]
+  }
 
   node_pools_tags = {
     all = []
