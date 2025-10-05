@@ -1,3 +1,3 @@
 module "instance" {
-    source = "../../instance"
+    source = "../../instance/basic-instance"
 }
