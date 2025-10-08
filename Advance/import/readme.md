@@ -30,13 +30,25 @@ Use the GCP-specific ID format for the resource you want to import.
 Example:
 
 ```bash
+terraform init
 terraform import google_compute_instance.existing_vm projects/<PROJECT_ID>/zones/<ZONE>/instances/<INSTANCE_NAME>
 ```
 
 For example:
 
 ```bash
-terraform import google_compute_instance.existing_vm projects/neat-glazing-473202-f3/zones/us-central1-c/instances/gcp-import-demo
+sagarganesh511@gcp-terraform-practice:~/gcp-terraform/terraform-gcp/Advance/import$ terraform import google_compute_instance.existing-vm projects/neat-glazing-473202-f3/zo
+nes/us-central1-c/instances/gcp-terraform-practice
+google_compute_instance.existing-vm: Importing from ID "projects/neat-glazing-473202-f3/zones/us-central1-c/instances/gcp-terraform-practice"...
+google_compute_instance.existing-vm: Import prepared!
+  Prepared google_compute_instance for import
+google_compute_instance.existing-vm: Refreshing state... [id=projects/neat-glazing-473202-f3/zones/us-central1-c/instances/gcp-terraform-practice]
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+
 ```
 
 ---
