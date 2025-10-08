@@ -102,7 +102,7 @@ If it shows **“No changes”**, you’ve successfully imported and reconciled 
 
 ---
 
-✅ **Summary of the flow (same as AWS):**
+✅ **Summary of the flow:**
 
 | Step | Command                     | Purpose                               |
 | ---- | --------------------------- | ------------------------------------- |
@@ -112,7 +112,3 @@ If it shows **“No changes”**, you’ve successfully imported and reconciled 
 | 4    | Update main.tf              | Match configuration to reality        |
 | 5    | `terraform plan`            | Confirm everything aligns             |
 
----
-
-Would you like me to give you **3 import practice tasks** for GCP (e.g., VM, storage bucket, and firewall) — just like a mini-lab you can run on your account?
-It’ll be perfect prep for interviews.
