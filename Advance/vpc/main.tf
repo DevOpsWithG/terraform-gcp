@@ -14,7 +14,7 @@ resource "google_compute_firewall" "allow-http" {
   name = "allow-http"
   network = google_compute_network.network.id
   allow {
-    protocol = tcp
+    protocol = "tcp"
     ports = ["80"]    
   }
   source_ranges = ["0.0.0.0./0"]
