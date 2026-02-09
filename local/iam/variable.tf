@@ -13,3 +13,5 @@ variable "zone" {
 variable "dev_users" {
     type        = list(string)
 }
+
+variable "credentials" {}

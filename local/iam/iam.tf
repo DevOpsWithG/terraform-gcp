@@ -1,6 +1,6 @@
 resource "google_project_iam_binding" "oslogin" {
     project = "own-projects-dev"
-    role = "roles/compute.oslogin"
+    role = "roles/compute.osLogin"
     members = [for u in var.dev_users : "user:${u}"]
 }
 
